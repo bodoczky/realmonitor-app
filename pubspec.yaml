@@ -13,6 +13,8 @@ dependencies:
   flutter_bloc: ^8.0.1 # for state management
   http: ^0.13.4 # for handling HTTP requests
   json_annotation: ^4.6.0  # defines the annotations used by json_serializable 
+  intl: ^0.17.0 #for localization and NumberFormat
+
   
  
 
@@ -21,7 +23,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  json_serializable: ^6.3.1 # helps with json serialization
+  json_serializable: ^6.3.1 # for json serialization
   build_runner: ^2.2.0 #for code generation (eg. json serialization)
 
 flutter:

@@ -16,19 +16,20 @@ FilterModel _$FilterModelFromJson(Map<String, dynamic> json) => FilterModel(
           ?.map((e) => FilterLocationsModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       name: json['name'] as String?,
-      assignmentType: json['assignmentType'] as String?,
+      assignmentType:
+          $enumDecodeNullable(_$AssignmentTypeEnumMap, json['assignmentType']),
       estateTypes: (json['estateTypes'] as List<dynamic>?)
-          ?.map((e) => e as String)
+          ?.map((e) => $enumDecode(_$EstateTypesEnumMap, e))
           .toList(),
       createTime: json['createTime'] as int?,
       usesUmbrella: json['usesUmbrella'] as bool?,
-      id: json['id'] as bool?,
-      minPrice: json['minPrice'] as int?,
-      maxPrice: json['maxPrice'] as int?,
+      id: json['id'] as int?,
+      minPrice: (json['minPrice'] as num?)?.toDouble(),
+      maxPrice: (json['maxPrice'] as num?)?.toDouble(),
       minFloorArea: json['minFloorArea'] as int?,
       maxFloorArea: json['maxFloorArea'] as int?,
-      minUnitPrice: json['minUnitPrice'] as int?,
-      maxUnitPrice: json['maxUnitPrice'] as int?,
+      minUnitPrice: (json['minUnitPrice'] as num?)?.toDouble(),
+      maxUnitPrice: (json['maxUnitPrice'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$FilterModelToJson(FilterModel instance) =>
@@ -40,8 +41,9 @@ Map<String, dynamic> _$FilterModelToJson(FilterModel instance) =>
       'nameSpace': instance.nameSpace,
       'locations': instance.locations?.map((e) => e.toJson()).toList(),
       'name': instance.name,
-      'assignmentType': instance.assignmentType,
-      'estateTypes': instance.estateTypes,
+      'assignmentType': _$AssignmentTypeEnumMap[instance.assignmentType],
+      'estateTypes':
+          instance.estateTypes?.map((e) => _$EstateTypesEnumMap[e]!).toList(),
       'createTime': instance.createTime,
       'usesUmbrella': instance.usesUmbrella,
       'id': instance.id,
@@ -52,3 +54,13 @@ Map<String, dynamic> _$FilterModelToJson(FilterModel instance) =>
       'minUnitPrice': instance.minUnitPrice,
       'maxUnitPrice': instance.maxUnitPrice,
     };
+
+const _$AssignmentTypeEnumMap = {
+  AssignmentType.forSale: 'FOR_SALE',
+  AssignmentType.toLet: 'TO_LET',
+};
+
+const _$EstateTypesEnumMap = {
+  EstateTypes.house: 'HOUSE',
+  EstateTypes.flat: 'FLAT',
+};

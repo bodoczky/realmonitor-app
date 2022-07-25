@@ -1,0 +1,1 @@
+enum FormatExtent { thousand, million }
