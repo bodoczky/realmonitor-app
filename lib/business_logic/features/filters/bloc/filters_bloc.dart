@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,11 +25,8 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
     });
   }
 
-  /*
-  Creates a FiltersModel which will be passed to the BE.
-  This will be sent back from BE to the client as a response.
-  Only for temporary testing purposes. 
-  */
+  //Creates a FiltersModel which will be passed to the BE. This will be sent back from BE to the client as a response. Only for temporary testing purposes.
+
   FilterModel getDummyFilters() {
     return FilterModel(
         isNotificationEnabled: true,

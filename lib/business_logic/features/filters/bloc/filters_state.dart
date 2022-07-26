@@ -1,7 +1,12 @@
 part of 'filters_bloc.dart';
 
 @immutable
-abstract class FiltersState {}
+abstract class FiltersState extends Equatable {
+  const FiltersState();
+
+  @override
+  List<Object> get props => [];
+}
 
 class FiltersInitial extends FiltersState {}
 
@@ -9,10 +14,14 @@ class FiltersLoadingState extends FiltersState {}
 
 class FiltersErrorState extends FiltersState {
   final String message;
-  FiltersErrorState(this.message);
+  const FiltersErrorState(this.message);
+  @override
+  List<Object> get props => [message];
 }
 
 class FiltersLoadedState extends FiltersState {
   final FilterModel model;
-  FiltersLoadedState(this.model);
+  const FiltersLoadedState(this.model);
+  @override
+  List<Object> get props => [model];
 }

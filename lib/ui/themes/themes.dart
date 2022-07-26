@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ingatlan_figyelo_teszt/ui/themes/filters_widget_themes/filters_widget_extensions.dart';
 
 class LightTheme {
   ThemeData themeData = ThemeData(
+    extensions: [...?FiltersThemeExtensions().filtersThemeExtensions],
     brightness: Brightness.light,
     primaryColor: const Color(0xff00adf1),
     primarySwatch: const MaterialColor(0xFF00adf1, {

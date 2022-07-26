@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ingatlan_figyelo_teszt/business_logic/features/filters/repository/filters_repository.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/dashboard/dashboard.dart';
+import 'package:ingatlan_figyelo_teszt/ui/screens/settings/profile/profile.dart';
+import 'package:ingatlan_figyelo_teszt/ui/screens/settings/settings.dart';
 import 'package:ingatlan_figyelo_teszt/ui/themes/themes.dart';
 
 class MyApp extends StatelessWidget {
@@ -15,7 +17,12 @@ class MyApp extends StatelessWidget {
         title: 'Ingatlanfigyelő',
         theme: LightTheme().themeData,
         darkTheme: DarkTheme().themeData,
-        home: const Dashboard(),
+        routes: {
+          '/': (context) => const Dashboard(),
+          '/settings': (context) => const SettingsScreen(),
+          '/profile': (context) => const ProfileScreen(),
+        },
+        initialRoute: '/',
       ),
     );
   }
