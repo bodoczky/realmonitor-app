@@ -1,4 +1,4 @@
-import 'package:ingatlan_figyelo_teszt/models/enums/enums.dart';
+import 'package:ingatlan_figyelo_teszt/models/enums/common_enums.dart';
 
 int? formatPrices(dynamic myNumber, FormatExtent formatExtent) {
   RegExp regex = RegExp(r'([.]*0)(?!.*\d)');

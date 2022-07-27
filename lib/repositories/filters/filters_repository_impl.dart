@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart';
 import 'package:ingatlan_figyelo_teszt/models/filter/filter_model.dart';
+import 'package:ingatlan_figyelo_teszt/repositories/filters/filters_repository.dart';
 
-class FiltersRepository {
+class FiltersRepositoryImpl implements FiltersRepository {
   final String _baseUrl = "https://jsonplaceholder.typicode.com/posts";
 
+  @override
   Future<FilterModel> getFilters(FilterModel filterModel) async {
     Map<String, String> headers = {
       HttpHeaders.contentTypeHeader: "application/json"

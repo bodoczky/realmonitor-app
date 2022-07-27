@@ -9,12 +9,22 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.2
+  flutter_localizations: # for localization
+    sdk: flutter       
+  intl: ^0.17.0 #for localization and other utils eg. NumberFormat 
+  cupertino_icons: ^1.0.2 # iOS Icons
+  bloc: ^8.0.3 # for state management
   flutter_bloc: ^8.0.1 # for state management
   http: ^0.13.4 # for handling HTTP requests
   json_annotation: ^4.6.0  # defines the annotations used by json_serializable 
-  intl: ^0.17.0 #for localization and NumberFormat
-  equatable: ^2.0.3
+  equatable: ^2.0.3 # for overriding "==" operator 
+  dotted_border: ^2.0.0+2 # for dotted borders
+  pie_chart: ^5.3.2 # showcase a pie chart
+  font_awesome_flutter: ^10.1.0 # icon pack
+  shared_preferences: ^2.0.15 # local storage
+  bloc_test: ^9.0.3
+  
+
 
   
  
@@ -26,11 +36,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   json_serializable: ^6.3.1 # for json serialization
   build_runner: ^2.2.0 #for code generation (eg. json serialization)
+  test: ^1.21.1
 
 flutter:
-
+  generate: true
   uses-material-design: true
   assets:
    - assets/images/filters_widget/
+   - assets/images/logos/
   # - assets/a_dot_ham.jpeg
 

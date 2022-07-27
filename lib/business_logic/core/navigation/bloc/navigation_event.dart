@@ -10,8 +10,9 @@ abstract class NavigationEvent extends Equatable {
 class NavigationEventPop extends NavigationEvent {}
 
 class NavigationEventAdd extends NavigationEvent {
-  final String page;
-  const NavigationEventAdd(this.page);
+  final Screen screen;
+  final Object? args;
+  const NavigationEventAdd(this.screen, this.args);
   @override
-  List<Object> get props => [page];
+  List<Object> get props => [screen, args ?? {}];
 }

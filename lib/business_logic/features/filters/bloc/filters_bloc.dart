@@ -4,20 +4,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ingatlan_figyelo_teszt/models/filter/locations/filter_locations_model.dart';
 
-import 'package:ingatlan_figyelo_teszt/business_logic/features/filters/repository/filters_repository.dart';
+import 'package:ingatlan_figyelo_teszt/repositories/filters/filters_repository_impl.dart';
 import 'package:ingatlan_figyelo_teszt/models/filter/filter_model.dart';
 
 part 'filters_event.dart';
 part 'filters_state.dart';
 
 class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
-  final FiltersRepository _filtersRepository;
+  final FiltersRepositoryImpl _filtersRepository;
   FiltersBloc(this._filtersRepository) : super(FiltersInitial()) {
     on<FiltersEvent>((event, emit) async {
       emit(FiltersLoadingState());
       try {
         final FilterModel filtersModel =
-            await _filtersRepository.getFilters(getDummyFilters());
+            await _filtersRepository.getFilters(getDummyFilter());
         emit(FiltersLoadedState(filtersModel));
       } catch (error) {
         emit(FiltersErrorState(error.toString()));
@@ -27,7 +27,7 @@ class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
 
   //Creates a FiltersModel which will be passed to the BE. This will be sent back from BE to the client as a response. Only for temporary testing purposes.
 
-  FilterModel getDummyFilters() {
+  FilterModel getDummyFilter() {
     return FilterModel(
         isNotificationEnabled: true,
         privateAdvertisersOnly: false,

@@ -107,10 +107,10 @@ class _RadarViewState extends State<RadarView>
                 child: Container(
                   height: 30,
                   width: 30,
-                  color: Colors.black,
+                  color: Colors.white,
                   child: const Icon(
                     Icons.home_rounded,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ),
               ),

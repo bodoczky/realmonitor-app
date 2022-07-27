@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ingatlan_figyelo_teszt/business_logic/features/navigation/bloc/navigation_bloc.dart';
+import 'package:ingatlan_figyelo_teszt/business_logic/core/navigation/bloc/navigation_bloc.dart';
+import 'package:ingatlan_figyelo_teszt/business_logic/utils/extensions/app_localizations_context.dart';
+import 'package:ingatlan_figyelo_teszt/models/enums/route_name_enums.dart';
+import 'package:ingatlan_figyelo_teszt/models/route_arguments/results_screen_arg_model.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/filters/filters_screen.dart';
 
 class Dashboard extends StatefulWidget {
@@ -23,12 +26,13 @@ class _DashboardState extends State<Dashboard> {
     return BlocListener<NavigationBloc, NavigationState>(
       listener: (context, state) {
         if (state is NavigationDone) {
-          Navigator.of(context).pushNamed(state.page);
+          Navigator.of(context)
+              .pushNamed(state.screen.value, arguments: state.args);
         }
       },
       child: Scaffold(
           appBar: AppBar(
-            title: const Text("Figyelések"),
+            title: Text(context.loc!.watches),
           ),
           body: const FiltersScreen(),
           floatingActionButton: SizedBox(
@@ -36,11 +40,9 @@ class _DashboardState extends State<Dashboard> {
             width: 70,
             child: FloatingActionButton(
               onPressed: () {
-                context
+                /* context
                     .read<NavigationBloc>()
-                    .add(const NavigationEventAdd("/settings"));
-
-                // context.read<FiltersBloc>().add(LoadFiltersEvent());
+                    .add(const NavigationEventAdd("/settings", {}));*/
               },
               tooltip: 'Új figyelés',
               child: const Icon(
@@ -58,49 +60,51 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 _buildDrawerMenuItems(
                     onTap: () {
-                      BlocProvider.of<NavigationBloc>(context)
-                          .add(const NavigationEventAdd("/settings"));
+                      Navigator.of(context).pop();
                     },
                     icon: Icons.visibility,
-                    text: "Figyelések"),
+                    text: context.loc!.watches),
                 _buildDrawerMenuItems(
                     onTap: () {
-                      BlocProvider.of<NavigationBloc>(context)
-                          .add(const NavigationEventAdd("/settings"));
+                      BlocProvider.of<NavigationBloc>(context).add(
+                          NavigationEventAdd(
+                              Screen.results,
+                              ResultsScreenArgModel(
+                                  title: "Sus, Suspect, Suspicious")));
                     },
                     icon: Icons.search,
-                    text: "Találatok"),
+                    text: context.loc!.results),
                 _buildDrawerMenuItems(
                     onTap: () {
                       BlocProvider.of<NavigationBloc>(context)
-                          .add(const NavigationEventAdd("/settings"));
+                          .add(const NavigationEventAdd(Screen.favorites, {}));
                     },
                     icon: Icons.favorite,
-                    text: "Kedvencek"),
+                    text: context.loc!.favorites),
                 _buildDrawerMenuItems(
                     onTap: () {
                       BlocProvider.of<NavigationBloc>(context)
-                          .add(const NavigationEventAdd("/settings"));
+                          .add(const NavigationEventAdd(Screen.marketInfo, {}));
                     },
                     icon: Icons.pie_chart,
-                    text: "Piacinfó"),
+                    text: context.loc!.marketInfo),
                 _buildDrawerMenuItems(
                     onTap: () {
-                      BlocProvider.of<NavigationBloc>(context)
-                          .add(const NavigationEventAdd("/settings"));
+                      BlocProvider.of<NavigationBloc>(context).add(
+                          const NavigationEventAdd(Screen.monetaryExtras, {}));
                     },
                     icon: Icons.attach_money,
-                    text: "Pénzügyi extrák"),
+                    text: context.loc!.monetaryExtras),
                 const Divider(
                   height: 10,
                 ),
                 _buildDrawerMenuItems(
                     onTap: () {
                       BlocProvider.of<NavigationBloc>(context)
-                          .add(const NavigationEventAdd("/settings"));
+                          .add(const NavigationEventAdd(Screen.settings, {}));
                     },
                     icon: Icons.settings,
-                    text: "Beállítások"),
+                    text: context.loc!.settings),
               ],
             ),
           ),
@@ -116,20 +120,27 @@ class _DashboardState extends State<Dashboard> {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Icon(
-                icon,
-                color: Colors.black45,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          color: Colors.transparent,
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30),
+                child: Icon(
+                  icon,
+                  color: Colors.black45,
+                ),
               ),
-            ),
-            Text(
-              text,
-              style: Theme.of(context).textTheme.headline1,
-            )
-          ],
+              Text(
+                text,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline1
+                    ?.copyWith(fontWeight: FontWeight.w500),
+              )
+            ],
+          ),
         ),
       ),
     );

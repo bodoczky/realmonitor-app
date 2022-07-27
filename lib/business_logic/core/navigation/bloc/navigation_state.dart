@@ -10,8 +10,9 @@ abstract class NavigationState extends Equatable {
 class NavigationPopped extends NavigationState {}
 
 class NavigationDone extends NavigationState {
-  final String page;
-  const NavigationDone(this.page);
+  final Screen screen;
+  final Object? args;
+  const NavigationDone(this.screen, this.args);
   @override
-  List<Object> get props => [page];
+  List<Object> get props => [screen, args ?? {}];
 }

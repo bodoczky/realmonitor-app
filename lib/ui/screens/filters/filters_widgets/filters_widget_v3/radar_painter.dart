@@ -5,11 +5,6 @@ import 'package:flutter/material.dart';
 class RadarPainter extends CustomPainter {
   final double angle;
 
-  final Paint _bgPaint = Paint()
-    ..color = Colors.white
-    ..strokeWidth = 1
-    ..style = PaintingStyle.stroke;
-
   final Paint _paint = Paint()..style = PaintingStyle.fill;
 
   int circleCount = 3;
@@ -19,16 +14,6 @@ class RadarPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     var radius = min(size.width / 2, size.height / 2);
-
-    /*canvas.drawLine(Offset(size.width / 2, size.height / 2 - radius),
-        Offset(size.width / 2, size.height / 2 + radius), _bgPaint);
-    canvas.drawLine(Offset(size.width / 2 - radius, size.height / 2),
-        Offset(size.width / 2 + radius, size.height / 2), _bgPaint);
-
-    for (var i = 1; i <= circleCount; ++i) {
-      canvas.drawCircle(Offset(size.width / 2, size.height / 2),
-          radius * i / circleCount, _bgPaint);
-    }*/
 
     _paint.shader = ui.Gradient.sweep(
         Offset(size.width / 2, size.height / 2),

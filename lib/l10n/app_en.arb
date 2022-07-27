@@ -1,0 +1,50 @@
+{
+    "applicationTitle": "Real Estate Monitor",
+    "@applicationTitle": {
+        "description": "Real Estate Monitor"
+    },
+    "watches": "Watches",
+    "@watches": {
+        "description": "Watches"
+    },
+    "results": "Results",
+    "@results": {
+        "description": "Results"
+    },
+    "favorites": "Favorites",
+    "@favorites": {
+        "description": "Favorites"
+    },
+    "marketInfo": "Market info",
+    "@marketInfo": {
+        "description": "Market info"
+    },
+    "monetaryExtras": "Monetary Extras",
+    "@monetaryExtras": {
+        "description": "Monetary Extras"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "Settings"
+    },
+    "profile": "Profile",
+    "@profile": {
+        "description": "Profile"
+    },
+    "dataProcessing": "Data processing",
+    "@dataProcessing": {
+        "description": "Data processing"
+    },
+    "switchLanguage": "Nyelv váltása magyarra 🇭🇺",
+    "@switchLanguage": {
+        "description": "Nyelv váltása magyarra"
+    },
+    "logOut": "Log out",
+    "@logOut": {
+        "description": "Log out"
+    },
+    "deleteAccount": "Delete account",
+    "@deleteAccount": {
+        "description": "Delete account"
+    }
+}

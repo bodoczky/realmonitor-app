@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ingatlan_figyelo_teszt/business_logic/utils/string_formatters.dart';
-import 'package:ingatlan_figyelo_teszt/models/enums/enums.dart';
+import 'package:ingatlan_figyelo_teszt/models/enums/common_enums.dart';
 import 'package:ingatlan_figyelo_teszt/models/filter/filter_model.dart';
 
 class FiltersWidgetOriginalBody extends StatelessWidget {

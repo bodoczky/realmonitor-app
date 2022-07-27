@@ -1,108 +1,107 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ingatlan_figyelo_teszt/business_logic/core/navigation/bloc/navigation_bloc.dart';
-import 'package:ingatlan_figyelo_teszt/models/enums/route_name_enums.dart';
 
 import 'package:ingatlan_figyelo_teszt/models/filter/filter_model.dart';
-import 'package:ingatlan_figyelo_teszt/models/route_arguments/results_screen_arg_model.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/filters/filters_widgets/filters_widget_v3/radar_view.dart';
 import 'package:ingatlan_figyelo_teszt/ui/themes/filters_widget_themes/filters_widget_v3_theme_extension.dart';
 
-class FiltersWidgetV3 extends StatelessWidget {
+class FiltersWidgetV4 extends StatelessWidget {
   final FilterModel model;
-  const FiltersWidgetV3({
+  const FiltersWidgetV4({
     Key? key,
     required this.model,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
+    return SizedBox(
+      height: MediaQuery.of(context).size.height,
+      child: Stack(
+        children: [
+          Positioned.fill(
+              child: Container(
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+                border: Border.all(width: 1.5, color: const Color(0xffc5c3c0)),
+                borderRadius: BorderRadius.circular(20),
+                image: const DecorationImage(
+                    fit: BoxFit.fitHeight,
+                    image:
+                        AssetImage("assets/images/filters_widget/house3.jpg"))),
+          )),
+          Positioned.fill(
             child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-              border: Border.all(width: 1.5, color: const Color(0xffc5c3c0)),
-              borderRadius: BorderRadius.circular(20),
-              image: const DecorationImage(
-                  fit: BoxFit.fitHeight,
-                  image:
-                      AssetImage("assets/images/filters_widget/house3.jpg"))),
-        )),
-        Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: const LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Colors.black,
-                    Colors.transparent,
-                  ],
-                  stops: [0.0, 1.0],
-                )),
-          ),
-        ),
-        Positioned.fill(
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                gradient: const LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    Colors.black87,
-                    Colors.transparent,
-                  ],
-                  stops: [
-                    0.0,
-                    0.6,
-                  ],
-                )),
-          ),
-        ),
-        Positioned(
-          right: 10,
-          top: 10,
-          //credit: https://www.codetd.com/en/article/11667523
-          child: Container(
-              height: 140,
-              width: 140,
               decoration: BoxDecoration(
-                  backgroundBlendMode: BlendMode.color,
-                  gradient: LinearGradient(
-                      begin: FractionalOffset.topCenter,
-                      end: FractionalOffset.bottomCenter,
-                      colors: [
-                        Colors.grey.withOpacity(0.0),
-                        Colors.black,
-                      ],
-                      stops: const [
-                        0.0,
-                        1.0
-                      ])),
-              child: const RadarView()),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(25.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(context),
-              const SizedBox(
-                height: 30,
-              ),
-              _buildBody(context),
-              const SizedBox(
-                height: 30,
-              ),
-              _buildControls(context),
-            ],
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      Colors.black,
+                      Colors.transparent,
+                    ],
+                    stops: [0.0, 1.0],
+                  )),
+            ),
           ),
-        ),
-      ],
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  gradient: const LinearGradient(
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
+                    colors: [
+                      Colors.black87,
+                      Colors.transparent,
+                    ],
+                    stops: [
+                      0.0,
+                      0.6,
+                    ],
+                  )),
+            ),
+          ),
+          Positioned(
+            right: 10,
+            top: 10,
+            //credit: https://www.codetd.com/en/article/11667523
+            child: Container(
+                height: 140,
+                width: 140,
+                decoration: BoxDecoration(
+                    backgroundBlendMode: BlendMode.color,
+                    gradient: LinearGradient(
+                        begin: FractionalOffset.topCenter,
+                        end: FractionalOffset.bottomCenter,
+                        colors: [
+                          Colors.grey.withOpacity(0.0),
+                          Colors.black,
+                        ],
+                        stops: const [
+                          0.0,
+                          1.0
+                        ])),
+                child: const RadarView()),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(25.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(context),
+                const SizedBox(
+                  height: 30,
+                ),
+                _buildBody(context),
+                const SizedBox(
+                  height: 30,
+                ),
+                _buildControls(context),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -223,19 +222,13 @@ class FiltersWidgetV3 extends StatelessWidget {
   }
 
   Widget _buildControls(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: Material(
-        color: Colors.white,
-        child: InkWell(
-          splashColor: Colors.grey[100],
-          onTap: () {
-            BlocProvider.of<NavigationBloc>(context).add(NavigationEventAdd(
-                Screen.results, ResultsScreenArgModel(title: "Suspect")));
-          },
+    return Column(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
           child: Container(
             height: 50,
-            color: Colors.transparent, //const Color(0xff2c4c68),
+            color: Colors.white, //const Color(0xff2c4c68),
             child: const Center(
                 child: Text(
               "Megnyitás",
@@ -246,7 +239,7 @@ class FiltersWidgetV3 extends StatelessWidget {
             )),
           ),
         ),
-      ),
+      ],
     );
   }
 }
