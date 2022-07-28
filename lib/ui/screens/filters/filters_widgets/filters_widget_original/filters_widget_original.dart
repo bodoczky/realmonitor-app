@@ -16,31 +16,28 @@ class FiltersWidgetOriginal extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => _navigateToResultsScreen(context),
-      child: Hero(
-        tag: "title",
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 10,
-                    spreadRadius: 0,
-                    offset: const Offset(0.0, 10))
-              ],
-              borderRadius: BorderRadius.circular(20)),
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _buildTitle(context),
-                _buildSubHeader(context),
-                FiltersWidgetOriginalBody(model: model),
-                _buildBottomControls(),
-              ],
-            ),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withOpacity(0.2),
+                  blurRadius: 10,
+                  spreadRadius: 0,
+                  offset: const Offset(0.0, 10)),
+            ],
+            borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildTitle(context),
+              _buildSubHeader(context),
+              FiltersWidgetOriginalBody(model: model),
+              _buildBottomControls(),
+            ],
           ),
         ),
       ),
