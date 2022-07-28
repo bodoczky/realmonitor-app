@@ -20,7 +20,13 @@ class ResultsScreen extends StatelessWidget {
         },
         child: Scaffold(
           appBar: AppBar(
-            title: Text(title ?? ""),
+            title: Text(
+              title ?? "",
+              style: Theme.of(context)
+                  .textTheme
+                  .headline1
+                  ?.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+            ),
             actions: [
               _buildActionsButton(
                   iconData: FontAwesomeIcons.landmark, onTap: () {}),

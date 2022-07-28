@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ingatlan_figyelo_teszt/models/route_arguments/results_screen_arg_model.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/dashboard/dashboard_screen.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/favorites/favorites_screen.dart';
+import 'package:ingatlan_figyelo_teszt/ui/screens/filters/filters_widgets/new_ideas/new_ideas_screen.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/market_info/market_info_screen.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/monetary_extras/monetary_extras_screen.dart';
 import 'package:ingatlan_figyelo_teszt/ui/screens/results/results_screen.dart';
@@ -41,6 +42,15 @@ class RouteGenerator {
       case '/profile':
         return MaterialPageRoute(builder: (BuildContext context) {
           return const ProfileScreen();
+        });
+      case '/new_ideas':
+        return MaterialPageRoute(builder: (BuildContext context) {
+          NewIdeasScreenArgModel newIdeasScreenArgModel =
+              args as NewIdeasScreenArgModel;
+
+          return NewIdeasScreen(
+            model: newIdeasScreenArgModel.model,
+          );
         });
       default:
         return MaterialPageRoute(

@@ -27,8 +27,7 @@ class FiltersWidgetV3 extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               image: const DecorationImage(
                   fit: BoxFit.fitHeight,
-                  image:
-                      AssetImage("assets/images/filters_widget/house3.jpg"))),
+                  image: AssetImage("assets/images/filters_widget/house.jpg"))),
         )),
         Positioned.fill(
           child: Container(
@@ -63,27 +62,11 @@ class FiltersWidgetV3 extends StatelessWidget {
                 )),
           ),
         ),
-        Positioned(
+        const Positioned(
           right: 10,
           top: 10,
           //credit: https://www.codetd.com/en/article/11667523
-          child: Container(
-              height: 140,
-              width: 140,
-              decoration: BoxDecoration(
-                  backgroundBlendMode: BlendMode.color,
-                  gradient: LinearGradient(
-                      begin: FractionalOffset.topCenter,
-                      end: FractionalOffset.bottomCenter,
-                      colors: [
-                        Colors.grey.withOpacity(0.0),
-                        Colors.black,
-                      ],
-                      stops: const [
-                        0.0,
-                        1.0
-                      ])),
-              child: const RadarView()),
+          child: SizedBox(height: 140, width: 140, child: RadarView()),
         ),
         Padding(
           padding: const EdgeInsets.all(25.0),

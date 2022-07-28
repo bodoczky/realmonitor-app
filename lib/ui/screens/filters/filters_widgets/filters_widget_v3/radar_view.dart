@@ -47,23 +47,23 @@ class _RadarViewState extends State<RadarView>
   }
 
   void _generateHouseIconPosition(Timer timer) {
-    if (mounted) {
-      if (!_pointVisible) {
-        _pointX = Random().nextInt((_width - (_width / 5)).toInt()).toDouble();
-        _pointX = _pointX.clamp((_width / 5),
-            (_width - (_width / 2))); //to avoid edges and top right corner
+    if (!_pointVisible) {
+      _pointX = Random().nextInt((_width - (_width / 5)).toInt()).toDouble();
+      _pointX = _pointX.clamp((_width / 5),
+          (_width - (_width / 2))); //to avoid edges and top right corner
 
-        _pointY =
-            Random().nextInt((_height - (_height / 5)).toInt()).toDouble();
-        _pointY = _pointY.clamp((_height / 5),
-            (_height - (_height / 2))); //to avoid edges and top right corner
-
+      _pointY = Random().nextInt((_height - (_height / 5)).toInt()).toDouble();
+      _pointY = _pointY.clamp((_height / 5),
+          (_height - (_height / 2))); //to avoid edges and top right corner
+      if (mounted) {
         Future.delayed(const Duration(seconds: 2), () {
           setState(() {
             _pointVisible = !_pointVisible;
           });
         });
-      } else {
+      }
+    } else {
+      if (mounted) {
         setState(() {
           _pointVisible = !_pointVisible;
         });
@@ -87,7 +87,6 @@ class _RadarViewState extends State<RadarView>
           child: AnimatedBuilder(
             animation: _animation,
             builder: (context, child) {
-              //print(_animation.value);
               return CustomPaint(
                 painter: RadarPainter(_animation.value),
               );

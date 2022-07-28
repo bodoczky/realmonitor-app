@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ingatlan_figyelo_teszt/models/filter/filter_model.dart';
+import 'package:ingatlan_figyelo_teszt/ui/screens/filters/filters_widgets/common_widgets/open_results_button.dart';
 import 'package:ingatlan_figyelo_teszt/ui/themes/filters_widget_themes/filters_widget_v1_theme_extension.dart';
 
 class FiltersWidgetV1 extends StatelessWidget {
@@ -13,7 +14,6 @@ class FiltersWidgetV1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //height: 300,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
           border: Border.all(width: 1.5, color: const Color(0xffc5c3c0)),
@@ -35,7 +35,13 @@ class FiltersWidgetV1 extends StatelessWidget {
             const SizedBox(
               height: 30,
             ),
-            _buildControls(context),
+            OpenResultsButton(
+              model: model,
+              backgroundColor: const Color(0xff2c4c68),
+              splashColor: const Color(0xff2c4c68),
+              text: "Megnyitás",
+              textColor: Colors.white,
+            )
           ],
         ),
       ),
@@ -130,32 +136,6 @@ class FiltersWidgetV1 extends StatelessWidget {
             ),
           ],
         ),
-      ],
-    );
-  }
-
-  Widget _buildControls(BuildContext context) {
-    return Column(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            height: 50,
-            color: const Color(0xff2c4c68),
-            child: const Center(
-                child: Text(
-              "Megnyitás",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              ),
-            )),
-          ),
-        ),
-        /*const SizedBox(
-          height: 20,
-        ),
-        const Icon(Icons.notifications)*/
       ],
     );
   }

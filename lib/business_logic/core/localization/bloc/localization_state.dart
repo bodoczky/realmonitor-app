@@ -2,7 +2,6 @@ part of 'localization_bloc.dart';
 
 abstract class LocalizationState extends Equatable {
   final Locale locale;
-
   const LocalizationState({required this.locale});
 
   @override

@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ingatlan_figyelo_teszt/models/filter/filter_model.dart';
+import 'package:ingatlan_figyelo_teszt/ui/screens/filters/filters_widgets/common_widgets/open_results_button.dart';
 import 'package:ingatlan_figyelo_teszt/ui/themes/filters_widget_themes/filters_widget_v2_theme_extension.dart';
 
 class FiltersWidgetV2 extends StatelessWidget {
@@ -19,30 +21,36 @@ class FiltersWidgetV2 extends StatelessWidget {
             decoration: BoxDecoration(
                 border: Border.all(width: 1.5, color: Colors.white),
                 borderRadius: BorderRadius.circular(20),
-                gradient: /*const LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Color(0xff2b4c67), Color(0xff3a688d)])*/
-                    const RadialGradient(
-                        radius: 0.9,
-                        focalRadius: 15,
-                        stops: [0.4, 0.9],
-                        colors: [Color(0xFF3586C8), Color(0xFF2D77B4)])),
+                gradient: const RadialGradient(
+                    radius: 0.9,
+                    focalRadius: 15,
+                    stops: [0.4, 0.9],
+                    colors: [Color(0xFF3586C8), Color(0xFF2D77B4)])),
           ),
         ),
-        const Positioned(
+        Positioned(
           top: 0,
-          right: 40,
-          child: Icon(
-            Icons.home_rounded,
-            color: Colors.white12,
-            size: 120,
+          right: 60,
+          child: Stack(
+            children: const [
+              Positioned(
+                top: 30,
+                left: 32,
+                child: Icon(
+                  Icons.home_rounded,
+                  color: Colors.white12,
+                  size: 40,
+                ),
+              ),
+              Icon(
+                CupertinoIcons.search,
+                color: Colors.white12,
+                size: 120,
+              ),
+            ],
           ),
         ),
         SizedBox(
-          //height: 300,
-          //width: MediaQuery.of(context).size.width,
-
           child: Padding(
             padding: const EdgeInsets.all(25.0),
             child: Column(
@@ -56,7 +64,13 @@ class FiltersWidgetV2 extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                _buildControls(context),
+                OpenResultsButton(
+                  model: model,
+                  backgroundColor: Colors.white,
+                  splashColor: Colors.grey[100],
+                  text: "Megnyitás",
+                  textColor: const Color(0xff38668b),
+                )
               ],
             ),
           ),
@@ -73,7 +87,7 @@ class FiltersWidgetV2 extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Suspicious",
+              model.name ?? "",
               style: Theme.of(context)
                   .extension<FiltersWidgetV2Theme>()
                   ?.dataRowTitleTextStyle
@@ -155,28 +169,6 @@ class FiltersWidgetV2 extends StatelessWidget {
                   ?.dataRowValueTextStyle,
             ),
           ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildControls(BuildContext context) {
-    return Column(
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            height: 50,
-            color: Colors.white,
-            child: const Center(
-                child: Text(
-              "Megnyitás",
-              style: TextStyle(
-                color: Color(0xff38668b),
-                fontSize: 18,
-              ),
-            )),
-          ),
         ),
       ],
     );

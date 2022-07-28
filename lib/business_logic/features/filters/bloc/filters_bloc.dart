@@ -3,15 +3,15 @@ import 'package:flutter/foundation.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ingatlan_figyelo_teszt/models/filter/locations/filter_locations_model.dart';
+import 'package:ingatlan_figyelo_teszt/repositories/filters/filters_repository.dart';
 
-import 'package:ingatlan_figyelo_teszt/repositories/filters/filters_repository_impl.dart';
 import 'package:ingatlan_figyelo_teszt/models/filter/filter_model.dart';
 
 part 'filters_event.dart';
 part 'filters_state.dart';
 
 class FiltersBloc extends Bloc<FiltersEvent, FiltersState> {
-  final FiltersRepositoryImpl _filtersRepository;
+  final FiltersRepository _filtersRepository;
   FiltersBloc(this._filtersRepository) : super(FiltersInitial()) {
     on<FiltersEvent>((event, emit) async {
       emit(FiltersLoadingState());

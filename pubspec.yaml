@@ -1,5 +1,5 @@
 name: ingatlan_figyelo_teszt
-description: A new Flutter project.
+description: The Big Brother of Real Estate
 publish_to: 'none' 
 version: 1.0.0+1
 
@@ -22,7 +22,8 @@ dependencies:
   pie_chart: ^5.3.2 # showcase a pie chart
   font_awesome_flutter: ^10.1.0 # icon pack
   shared_preferences: ^2.0.15 # local storage
-  bloc_test: ^9.0.3
+  rive: ^0.9.0 # for custom vector animations
+  bloc_test: ^9.0.3 #for testing
   
 
 
@@ -36,13 +37,14 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   json_serializable: ^6.3.1 # for json serialization
   build_runner: ^2.2.0 #for code generation (eg. json serialization)
-  test: ^1.21.1
+  test: ^1.21.1 #for testing
+  mockito: ^5.2.0 #for testing
 
 flutter:
   generate: true
   uses-material-design: true
   assets:
-   - assets/images/filters_widget/
-   - assets/images/logos/
-  # - assets/a_dot_ham.jpeg
+   - assets/images/filters_widget/house.jpg
+   - assets/images/logos/kh_logo.png
+   - assets/animations/icon_anim.riv
 

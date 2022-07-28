@@ -6,7 +6,8 @@ enum Screen {
   marketInfo("/market_info"),
   monetaryExtras("/monetary_extras"),
   settings("/settings"),
-  profile("/profile");
+  profile("/profile"),
+  newIdeas("/new_ideas");
 
   final String value;
 
